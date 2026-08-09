@@ -1,0 +1,10 @@
+[package]
+name = "anerror"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anerror-impl = { path = "impl" }
+
+[workspace]
+members = ["impl"]
