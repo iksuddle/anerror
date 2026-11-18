@@ -6,6 +6,9 @@ enum FooError {
     Parse(std::num::ParseIntError),
 }
 
+#[derive(AnError)]
+struct FooErr {}
+
 // fn get_line_int() -> Result<u32, FooError> {
 //     let mut buf = String::new();
 //     std::io::stdin().read_line(&mut buf)?;
