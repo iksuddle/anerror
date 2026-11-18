@@ -12,10 +12,12 @@ pub fn derive_anerror(input: TokenStream) -> TokenStream {
         syn::Data::Enum(data_enum) => data_enum.variants.iter().map(|variant| {
             let variant_name = &variant.ident;
             let inner_type = match &variant.fields {
-                syn::Fields::Unnamed(fields_unnamed) => match fields_unnamed.unnamed.first() {
-                    Some(field) => &field.ty,
-                    None => todo!(),
-                },
+                syn::Fields::Unnamed(fields_unnamed) if fields_unnamed.unnamed.len() == 1 => {
+                    match fields_unnamed.unnamed.first() {
+                        Some(field) => &field.ty,
+                        None => todo!(),
+                    }
+                }
                 _ => todo!(),
             };
 
